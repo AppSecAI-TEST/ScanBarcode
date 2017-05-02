@@ -42,7 +42,7 @@ public class TimeUtils {
         try {
             Date dt1 = df.parse(time1);//将字符串转换为date类型
             Date dt2 = df.parse(time2);
-            if(dt1.getTime()>dt2.getTime())//比较时间大小,dt1小于dt2
+            if(dt1.getTime()>= dt2.getTime())//比较时间大小,dt1小于dt2
             {
                 return true;
             }

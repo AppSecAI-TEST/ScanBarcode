@@ -15,6 +15,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.zh.shen.R;
 import com.zh.shen.adapter.BarcodeAdapter;
@@ -39,18 +40,23 @@ import java.util.Date;
 public class ChartFragment extends Fragment implements View.OnClickListener, OnDateSetListener {
 
     /** 日期 -- 文本 */
-    private TextView mTvTime;
+    private TextView mTvTimeFrom;
+    /** 日期 -- 文本 */
+    private TextView mTvTimeTo;
 
     /** 查询--按钮 */
     private Button mBtnQuery;
-    /** 生成excel--按钮 */
-    private Button mBtnCreateExcel;
+
     /** 列表框--ListView */
     private ListView mLvBarcode;
     /** 列表框适配器--Adapter */
     private BarcodeAdapter barcodeAdapter;
 
     ArrayList<BarcodeBean> mBarcodeBeanList = new ArrayList<>();
+
+
+    TimePickerDialog mDialogYearMonthDayFrom;
+    TimePickerDialog mDialogYearMonthDayTo;
 
     int mType = 0;
 
@@ -104,10 +110,11 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
 
     private void initView(View view) {
 
-        mTvTime = (TextView) view.findViewById(R.id.tv_time);
+        mTvTimeFrom = (TextView) view.findViewById(R.id.tv_time_from);
+        mTvTimeTo = (TextView) view.findViewById(R.id.tv_time_to);
 
         mBtnQuery = (Button) view.findViewById(R.id.btn_query);
-        mBtnCreateExcel = (Button) view.findViewById(R.id.btn_create_excel);
+
 
         mLvBarcode = (ListView) view.findViewById(R.id.lv_barcode);
 
@@ -116,10 +123,11 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
 
     private void initListener() {
 
-        mTvTime.setOnClickListener(this);
+        mTvTimeFrom.setOnClickListener(this);
+        mTvTimeTo.setOnClickListener(this);
 
         mBtnQuery.setOnClickListener(this);
-        mBtnCreateExcel.setOnClickListener(this);
+
     }
 
 
@@ -127,20 +135,26 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
 
         barcodeAdapter = new BarcodeAdapter(getActivity(), new ArrayList<BarcodeBean>());
 
-        mTvTime.setText(TimeUtils.getCurrentyyyyMMdd());
+        mTvTimeFrom.setText(TimeUtils.getCurrentyyyyMMdd());
+        mTvTimeTo.setText(TimeUtils.getCurrentyyyyMMdd());
 
     }
 
 
     private void query(){
 
+        String timeFrom = mTvTimeFrom.getText().toString().trim();
+        String timeTo = mTvTimeTo.getText().toString().trim();
+
+        if(!TimeUtils.compareTime(timeTo,timeFrom,"yyyy-MM-dd")){
+            Toast.makeText(getActivity(), "第二时间请输入比第一时间大", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         new queryTask().execute();
     }
 
-    private void createExcel() {
 
-        new createExcelTask().execute();
-    }
 
     /**
      * 设置控件是否可以"交互"
@@ -165,7 +179,8 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
         /** 数据库的表的操作类 */
         TableEx mTableEx;
 
-        String mTime = "";
+        String mTimeFrom = "";
+        String mTimeTo = "";
 
         @Override
         protected void onPreExecute() {								// 执行前
@@ -173,7 +188,8 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
             super.onPreExecute();
 
             mTableEx = new TableEx(getActivity());
-            mTime = mTvTime.getText().toString().trim();
+            mTimeFrom = mTvTimeFrom.getText().toString().trim();
+            mTimeTo = mTvTimeTo.getText().toString().trim();
 
             mypDialog = new ProgressDialog(getActivity());
             mypDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
@@ -187,8 +203,8 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
         protected ArrayList<BarcodeBean> doInBackground(String... params) {		// 执行中
             mBarcodeBeanList = new ArrayList<>();
 
-            Cursor cursor = mTableEx.Query(Constant.TABLE_BARCODE,null,"time=?",
-                    new String[]{mTime},null,null,null);
+            Cursor cursor = mTableEx.Query(Constant.TABLE_BARCODE,null,"time between ? and ?",
+                    new String[]{mTimeFrom,mTimeTo},null,null,null);
 
             while (cursor.moveToNext()) {
                 BarcodeBean bean = new BarcodeBean();
@@ -219,69 +235,49 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
     }
 
 
-    /**
-     * 生成Excel -- 异步类
-     *
-     */
-    public class createExcelTask extends AsyncTask<String, Integer, String> {
-        /** 进度条对话框 */
-        ProgressDialog mypDialog;
 
-        @Override
-        protected void onPreExecute() {								// 执行前
-            // TODO Auto-generated method stub
-            super.onPreExecute();
-
-            mypDialog = new ProgressDialog(getActivity());
-            mypDialog.setProgressStyle(ProgressDialog.STYLE_SPINNER);
-            mypDialog.setMessage("正在生成Excel...");
-            mypDialog.setCanceledOnTouchOutside(false);
-            mypDialog.show();
-        }
-
-
-        @Override
-        protected String doInBackground(String... params) {		// 执行中
-
-            try {
-                ExcelUtil.writeExcel(getActivity(), mBarcodeBeanList, "扫描表号");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            return "";
-        }
-
-        @Override
-        protected void onPostExecute(String str) {				// 执行后
-            super.onPostExecute(str);
-
-
-            mypDialog.cancel();
-            mHandler.sendEmptyMessage(0);
-
-        }
-    }
 
 
     /***************************  弹出窗口 选择时间 -- start **************************************/
     @Override
     public void onDateSet(TimePickerDialog timePickerView, long millseconds) {
+
+        TimePickerDialog mDialogYearMonthDay = null;
+
         Date date = new Date(millseconds);
         SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");//精确到分钟
         String str = format.format(date);
-        mTvTime.setText(str);
+
+        if(timePickerView == mDialogYearMonthDayFrom)
+            mTvTimeFrom.setText(str);
+
+        if(timePickerView == mDialogYearMonthDayTo)
+            mTvTimeTo.setText(str);
     }
 
 
 
-    private void getTime() {
-        TimePickerDialog mDialogYearMonthDay = new TimePickerDialog.Builder()
+    private void getTimeFrom() {
+        mDialogYearMonthDayFrom = new TimePickerDialog.Builder()
                 .setType(Type.YEAR_MONTH_DAY)
                 .setThemeColor(getResources().getColor(R.color.blue))
                 .setCallBack(this)
                 .build();
-        mDialogYearMonthDay.show(getActivity().getSupportFragmentManager(), "YEAR_MONTH_DAY");
+
+        mDialogYearMonthDayFrom.show(getActivity().getSupportFragmentManager(), "YEAR_MONTH_DAY");
+
+    }
+
+
+    private void getTimeTo() {
+        mDialogYearMonthDayTo = new TimePickerDialog.Builder()
+                .setType(Type.YEAR_MONTH_DAY)
+                .setThemeColor(getResources().getColor(R.color.blue))
+                .setCallBack(this)
+                .build();
+
+        mDialogYearMonthDayTo.show(getActivity().getSupportFragmentManager(), "YEAR_MONTH_DAY");
+
     }
     /**************************  弹出窗口 选择时间 -- end ***************************************/
 
@@ -317,12 +313,13 @@ public class ChartFragment extends Fragment implements View.OnClickListener, OnD
                 query();
                 break;
 
-            case R.id.btn_create_excel:
-                createExcel();
+
+            case R.id.tv_time_from:                      // 选择日期
+                getTimeFrom();
                 break;
 
-            case R.id.tv_time:                      // 选择日期
-                getTime();
+            case R.id.tv_time_to:                      // 选择日期
+                getTimeTo();
                 break;
         }
     }

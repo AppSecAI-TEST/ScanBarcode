@@ -323,6 +323,10 @@ public class AddFragment extends Fragment implements View.OnClickListener, OnDat
 
         long count = tableEx.Add(Constant.TABLE_BARCODE,values);
 
+
+        if(count > 0){
+            Toast.makeText(getActivity(), "保存成功", Toast.LENGTH_SHORT).show();
+        }
         Log.i("shen", "count:" + count);
     }
 

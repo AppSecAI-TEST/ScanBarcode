@@ -13,6 +13,7 @@ import android.widget.Toast;
 import com.zh.shen.adapter.Adapter;
 import com.zh.shen.fragment.AddFragment;
 import com.zh.shen.fragment.ChartFragment;
+import com.zh.shen.fragment.CreateExcelFragment;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -60,15 +61,17 @@ public class MainActivity extends AppCompatActivity implements Thread.UncaughtEx
         mTabContents = new ArrayList<>();
         mTabContents.add(AddFragment.newInstance());
         mTabContents.add(ChartFragment.newInstance(0));
+        mTabContents.add(CreateExcelFragment.newInstance());
 
         //将名称加载tab名字列表，正常情况下，我们应该在values/arrays.xml中进行定义然后调用
         mTitleList = new ArrayList<>();
         mTitleList.add("扫描");
         mTitleList.add("查询");
+        mTitleList.add("生成");
 
         mAdapter = new Adapter(getSupportFragmentManager(), mTabContents, mTitleList);
         mViewPager.setAdapter(mAdapter);
-        mViewPager.setOffscreenPageLimit(2);
+        mViewPager.setOffscreenPageLimit(3);
 
         mTabLayout.setupWithViewPager(mViewPager);
 

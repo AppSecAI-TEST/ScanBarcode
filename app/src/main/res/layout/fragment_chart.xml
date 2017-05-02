@@ -17,18 +17,33 @@
         <TextView
             android:layout_width="0dp"
             android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:layout_height="match_parent"
+            android:textSize="16dp"
             android:textColor="@android:color/black"
-            android:text="日期:"/>
+            android:text="时间段:"/>
 
         <TextView
-            android:id="@+id/tv_time"
+            android:id="@+id/tv_time_from"
             android:layout_width="0dp"
-            android:layout_weight="4"
-            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
             android:paddingLeft="20dp"
-            android:textSize="20dp"
+            android:textSize="16dp"
+            android:textColor="@android:color/black"
+            android:hint="点击选择日期"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="~"/>
+
+        <TextView
+            android:id="@+id/tv_time_to"
+            android:layout_width="0dp"
+            android:layout_weight="2"
+            android:layout_height="match_parent"
+            android:paddingLeft="20dp"
+            android:textSize="16dp"
             android:textColor="@android:color/black"
             android:hint="点击选择日期"/>
 
@@ -52,18 +67,6 @@
             android:layout_gravity="center"
             android:background="@drawable/btn_bg_blue_white"/>
 
-
-        <Button
-            android:id="@+id/btn_create_excel"
-            android:layout_marginLeft="10dp"
-            android:layout_width="0dp"
-            android:layout_weight="1"
-            android:layout_height="wrap_content"
-            android:textSize="25dp"
-            android:textColor="@android:color/black"
-            android:text="生成Excel"
-            android:layout_gravity="center"
-            android:background="@drawable/btn_bg_blue_white"/>
     </LinearLayout>
 
 

@@ -4,28 +4,28 @@
     api-level="19"
     density="hdpi"
     format="7"
-    timestamp="20626856853675" >
+    timestamp="27839398037667" >
 
     <task
         name="javac"
-        duration="895" />
+        duration="460" />
     <task
         name="instant-run-dex"
         duration="0" />
     <task
         name="instant-run-transform"
-        duration="67" />
+        duration="28" />
     <task
         name="verifier"
-        duration="7" />
+        duration="6" />
 
     <artifact
-        location="F:\AndroidStudioProjects\shen\app\build\outputs\apk\app-debug.apk"
+        location="F:\AndroidStudioProjects\shen\app\build\outputs\apk\ScanBarcode_1_v1.0.0_org.gradle.nativeplatform.BuildType.apk"
         type="MAIN" />
 
-    <build timestamp="20626856853675" >
+    <build timestamp="27839398037667" >
         <artifact
-            location="F:\AndroidStudioProjects\shen\app\build\outputs\apk\app-debug.apk"
+            location="F:\AndroidStudioProjects\shen\app\build\outputs\apk\ScanBarcode_1_v1.0.0_org.gradle.nativeplatform.BuildType.apk"
             type="MAIN" />
     </build>
 
