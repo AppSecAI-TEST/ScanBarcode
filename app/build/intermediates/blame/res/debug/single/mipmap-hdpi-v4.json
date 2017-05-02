@@ -1,0 +1,26 @@
+[
+    {
+        "merged": "F:\\AndroidStudioProjects\\shen\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chart.png",
+        "source": "F:\\AndroidStudioProjects\\shen\\app\\src\\main\\res\\mipmap-hdpi\\chart.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\shen\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\scan.png",
+        "source": "F:\\AndroidStudioProjects\\shen\\app\\src\\main\\res\\mipmap-hdpi\\scan.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\shen\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\scanbarcode.png",
+        "source": "F:\\AndroidStudioProjects\\shen\\app\\src\\main\\res\\mipmap-hdpi\\scanbarcode.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\shen\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\ic_launcher.png",
+        "source": "F:\\AndroidStudioProjects\\shen\\app\\src\\main\\res\\mipmap-hdpi\\ic_launcher.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\shen\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\chart_nomal.png",
+        "source": "F:\\AndroidStudioProjects\\shen\\app\\src\\main\\res\\mipmap-hdpi\\chart_nomal.png"
+    },
+    {
+        "merged": "F:\\AndroidStudioProjects\\shen\\app\\build\\intermediates\\res\\merged\\debug\\mipmap-hdpi-v4\\scan_nomal.png",
+        "source": "F:\\AndroidStudioProjects\\shen\\app\\src\\main\\res\\mipmap-hdpi\\scan_nomal.png"
+    }
+]

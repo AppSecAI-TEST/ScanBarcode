@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="shen_sky_blue">#dbeefb</color>
+    <color name="orange">#f2b84b</color>
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="border">#C7C7C7</color>
+
+    <color name="blue">#33B5E5</color>
+
+    <color name="holo_blue_dark">#ff0099cc</color>
+</resources>

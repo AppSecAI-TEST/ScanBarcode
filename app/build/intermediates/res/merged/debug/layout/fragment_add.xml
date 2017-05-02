@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_vertical"
+        android:background="@color/shen_sky_blue">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:text="表号:"/>
+
+        <EditText
+            android:id="@+id/et_table_number"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:text=""
+            android:maxLines="1"
+            android:padding="3dp"
+            android:background="@drawable/bg_edit"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/shen_sky_blue">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:text="原铅封:"/>
+
+        <EditText
+            android:id="@+id/et_old_title_number"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:text=""
+            android:maxLines="1"
+            android:padding="3dp"
+            android:background="@drawable/bg_edit"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@color/shen_sky_blue">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:textSize="15dp"
+            android:textColor="@android:color/black"
+            android:text="新铅封:"/>
+
+        <EditText
+            android:id="@+id/et_new_title_number"
+            android:layout_width="match_parent"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:text=""
+            android:maxLines="1"
+            android:padding="3dp"
+            android:background="@drawable/bg_edit"/>
+
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/shen_sky_blue">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:text="日期:"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:hint="点击选择日期"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+        <Button
+            android:id="@+id/btn_table_number"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:text="表号扫描"
+            android:background="@drawable/btn_bg_orange_white"/>
+
+        <Button
+            android:id="@+id/btn_old_title_number"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:text="原铅封扫描"
+            android:background="@drawable/btn_bg_orange_white"/>
+
+        <Button
+            android:id="@+id/btn_new_title_number"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="18dp"
+            android:textColor="@android:color/black"
+            android:text="新铅封扫描"
+            android:background="@drawable/btn_bg_orange_white"/>
+    </LinearLayout>
+
+
+    <Button
+        android:id="@+id/btn_save"
+        android:layout_marginTop="20dp"
+        android:layout_width="150dp"
+        android:layout_height="wrap_content"
+        android:textSize="25dp"
+        android:textColor="@android:color/black"
+        android:text="保存"
+        android:layout_gravity="center"
+        android:background="@drawable/btn_bg_blue_white"/>
+
+</LinearLayout>

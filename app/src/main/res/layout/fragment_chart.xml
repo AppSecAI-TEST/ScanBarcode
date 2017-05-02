@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:padding="5dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/shen_sky_blue">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:text="日期:"/>
+
+        <TextView
+            android:id="@+id/tv_time"
+            android:layout_width="0dp"
+            android:layout_weight="4"
+            android:layout_height="wrap_content"
+            android:paddingLeft="20dp"
+            android:textSize="20dp"
+            android:textColor="@android:color/black"
+            android:hint="点击选择日期"/>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_query"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textColor="@android:color/black"
+            android:text="查询"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_bg_blue_white"/>
+
+
+        <Button
+            android:id="@+id/btn_create_excel"
+            android:layout_marginLeft="10dp"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="wrap_content"
+            android:textSize="25dp"
+            android:textColor="@android:color/black"
+            android:text="生成Excel"
+            android:layout_gravity="center"
+            android:background="@drawable/btn_bg_blue_white"/>
+    </LinearLayout>
+
+
+    <!--android:divider="#00000000"   去掉线-->
+    <!--android:dividerHeight="10dp"-->
+    <ListView
+        android:layout_marginTop="10dp"
+        android:id="@+id/lv_barcode"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:divider="#00000000"
+        android:dividerHeight="5dp">
+    </ListView>
+
+</LinearLayout>
